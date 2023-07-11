@@ -1,3 +1,6 @@
+html {
+  color: #ccc;
+}
 .grid-container {
   display: grid;
   grid-template-columns: 1fr;
@@ -7,6 +10,12 @@
 }
 .main {
   background-color: magenta;
+}
+form {
+  width: 100%;
+}
+input {
+  width: 100%;
 }
 @media screen and (min-width: 768px) {
   .grid-container {

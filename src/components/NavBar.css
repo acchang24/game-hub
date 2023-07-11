@@ -2,9 +2,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: dodgerblue;
+  background-color: black;
 }
 .logo-img {
   width: 50px;
   height: 50px;
+}
+.toggler {
+  margin-left: 50px;
+  margin-right: 10px;
 }

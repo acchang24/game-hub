@@ -1,5 +1,6 @@
 import "./NavBar.css";
 import logo from "../assets/logo.svg";
+import Search from "./Search";
 
 const NavBar = () => {
   return (
@@ -8,8 +9,8 @@ const NavBar = () => {
         <img className="logo-img" src={logo} alt="logo" />
       </a>
 
-      <div>search</div>
-      <div>toggler</div>
+      <Search></Search>
+      <div>Toggler</div>
     </nav>
   );
 };
