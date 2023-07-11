@@ -1,0 +1,61 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, ".SFNSText-Regular", "Helvetica Neue", "Roboto",
+    "Segoe UI", sans-serif;
+}
+
+.toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-switch {
+  display: inline-block;
+  background: #ccc;
+  border-radius: 16px;
+  width: 40px;
+  height: 22px;
+  position: relative;
+  vertical-align: middle;
+}
+.toggle-switch:before,
+.toggle-switch:after {
+  content: "";
+}
+.toggle-switch:before {
+  display: block;
+  background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+  border-radius: 50%;
+  width: 41%;
+  height: 75%;
+  position: absolute;
+  top: 12.5%;
+  left: 10%;
+  transition: left 0.25s;
+}
+.toggle:hover .toggle-switch:before {
+  background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+}
+.toggle-checkbox:checked + .toggle-switch {
+  background: dodgerblue;
+}
+.toggle-checkbox:checked + .toggle-switch:before {
+  left: 50%;
+}
+
+.toggle-checkbox {
+  position: absolute;
+  visibility: hidden;
+}
+
+.toggle-label {
+  margin-left: 10px;
+  position: relative;
+  white-space: nowrap;
+}
