@@ -8,7 +8,6 @@ const NavBar = () => {
       <a href="/">
         <img className="logo-img" src={logo} alt="logo" />
       </a>
-
       <Search></Search>
       <div>Toggler</div>
     </nav>
