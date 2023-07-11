@@ -1,12 +1,6 @@
-.nav {
-  display: flex;
-  justify-content: space-between;
-  background-color: dodgerblue;
-}
 .grid-container {
   display: grid;
   grid-template-columns: 1fr;
-  /* background-color: tomato; */
 }
 .side-panel {
   background-color: cyan;

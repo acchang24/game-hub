@@ -6,10 +6,10 @@ function App() {
   return (
     <>
       <NavBar></NavBar>
-      <div className="grid-container">
+      {/* <div className="grid-container">
         <div className="grid-item side-panel">sidepanel</div>
         <div className="grid-item main">main</div>
-      </div>
+      </div> */}
     </>
   );
 }
