@@ -1,4 +1,26 @@
-#root {
+.nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: dodgerblue;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* background-color: tomato; */
+}
+.side-panel {
+  background-color: cyan;
+}
+.main {
+  background-color: magenta;
+}
+@media screen and (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: minmax(10px, 1fr) 5fr;
+  }
+}
+
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -39,4 +61,4 @@
 
 .read-the-docs {
   color: #888;
-}
+} */
