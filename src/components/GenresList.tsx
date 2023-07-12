@@ -57,7 +57,6 @@ const GenresList = () => {
           className="menu-icon"
           onClick={() => {
             setGenresActive(!genresActive);
-            console.log("Collapse", genresActive);
           }}
         ></AiOutlineMenu>
       </div>
