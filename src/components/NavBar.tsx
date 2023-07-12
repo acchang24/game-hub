@@ -2,6 +2,7 @@ import "./NavBar.css";
 import logo from "../assets/logo.svg";
 import Search from "./Search";
 
+// Returns a navbar component
 const NavBar = () => {
   return (
     <nav className="nav">

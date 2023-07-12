@@ -4,17 +4,18 @@ form {
 /* Input groups define container for everything in an input field */
 .input-group {
   align-items: center;
-  background: #121212;
+  background: #202020;
   border-radius: 30px;
   display: flex;
-  transition: box-shadow 0.3s;
+  transition: box-shadow 0.2s;
+  transition: background-color 0.2s;
 }
 .input-group:focus-within {
   box-shadow: 0 0 2px 2px dodgerblue;
-  background: #000;
+  background: #121212;
 }
 .input {
-  background: #121212;
+  background: #202020;
   border-radius: 30px;
   border: 0;
   box-sizing: border-box;
@@ -22,9 +23,10 @@ form {
   margin: 2px;
   outline: 0;
   padding: 10px 10px;
+  transition: background-color 0.2s;
 }
 .input:focus {
-  background: #000;
+  background: #121212;
 }
 .icon {
   color: #ccc;

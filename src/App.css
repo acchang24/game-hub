@@ -1,14 +1,17 @@
 html {
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
+  background: #111;
 }
 .grid-container {
   display: grid;
   grid-template-columns: 1fr;
 }
-.side-panel {
+/* .side-panel {
   background-color: cyan;
-}
+  text-align: Left;
+  padding-left: 25px;
+} */
 .main {
   background-color: magenta;
 }
@@ -20,6 +23,6 @@ input {
 }
 @media screen and (min-width: 768px) {
   .grid-container {
-    grid-template-columns: minmax(10px, 1fr) 5fr;
+    grid-template-columns: 200px 5fr;
   }
 }

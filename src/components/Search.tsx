@@ -3,6 +3,7 @@ import { BsSearch } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
 import "./Search.css";
 
+// Returns a search bar for searching games by name
 const Search = () => {
   // useRef to keep track of search inputs
   const searchRef = useRef<HTMLInputElement>(null);
