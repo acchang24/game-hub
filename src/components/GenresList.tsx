@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
+import { AiOutlineMenu } from "react-icons/ai";
+import apiClient from "../services/api-client";
 import "./GenresList.css";
 
 // Interface describing game genre info
@@ -20,7 +21,8 @@ function getCroppedImage(urlPath: string) {
 // Returns a list of game genres for the sidebar
 const GenresList = () => {
   const [genres, setGenres] = useState<Genre[]>([]);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string>("");
+  const [genresActive, setGenresActive] = useState<boolean>(false);
 
   // Fetch game genre data
   useEffect(() => {
@@ -37,30 +39,54 @@ const GenresList = () => {
     return () => controller.abort();
   }, []);
 
+  // Handles collapsibles when resizing
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 768) {
+        setGenresActive(true);
+      } else if (window.innerWidth < 768 && genresActive) {
+        setGenresActive(false);
+      }
+    });
+  });
+
   return (
     <>
-      <h2 className="genre-header">Genres</h2>
-      {error && <p>{error}</p>}
-      <ul className="genre-list">
-        {genres.map((g) => (
-          <li className="list-item" key={g.id}>
-            <button
-              className="genre-btn"
-              onClick={() => {
-                // TODO: handle this when game data fetching is ready
-                console.log(g.name);
-              }}
-            >
-              <img
-                className="genre-image"
-                src={getCroppedImage(g.image_background)}
-                alt="genre image"
-              />
-              {g.name}
-            </button>
-          </li>
-        ))}
-      </ul>
+      <div className="genre-collapsible">
+        <AiOutlineMenu
+          className="menu-icon"
+          onClick={() => {
+            setGenresActive(!genresActive);
+            console.log("Collapse", genresActive);
+          }}
+        ></AiOutlineMenu>
+      </div>
+      {(genresActive || window.innerWidth >= 768) && (
+        <>
+          <h2 className="genre-header">Genres</h2>
+          {error && <p>{error}</p>}
+          <ul className="genre-list">
+            {genres.map((g) => (
+              <li className="list-item" key={g.id}>
+                <button
+                  className="genre-btn"
+                  onClick={() => {
+                    // TODO: handle this when game data fetching is ready
+                    console.log(g.name);
+                  }}
+                >
+                  <img
+                    className="genre-image"
+                    src={getCroppedImage(g.image_background)}
+                    alt="genre image"
+                  />
+                  {g.name}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
     </>
   );
 };
