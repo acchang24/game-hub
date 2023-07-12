@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { CanceledError } from "axios";
 import { AiOutlineMenu } from "react-icons/ai";
 import apiClient from "../services/api-client";
+import Loader from "./Loader";
 import "./GenresList.css";
 
 // Interface describing game genre info
@@ -23,18 +24,24 @@ const GenresList = () => {
   const [genres, setGenres] = useState<Genre[]>([]);
   const [error, setError] = useState<string>("");
   const [genresActive, setGenresActive] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // Fetch game genre data
   useEffect(() => {
+    setIsLoading(true);
     const controller = new AbortController();
     apiClient
       .get("/genres", { signal: controller.signal })
-      .then((results) => setGenres(results.data.results))
+      .then((results) => {
+        setGenres(results.data.results);
+        setIsLoading(false);
+      })
       .catch((err) => {
         if (err instanceof CanceledError) return;
         else {
           setError(err.message);
         }
+        setIsLoading(false);
       });
     return () => controller.abort();
   }, []);
@@ -64,6 +71,11 @@ const GenresList = () => {
         <>
           <h2 className="genre-header">Genres</h2>
           {error && <p>{error}</p>}
+          {isLoading && (
+            <div className="loader">
+              <Loader></Loader>
+            </div>
+          )}
           <ul className="genre-list">
             {genres.map((g) => (
               <li className="list-item" key={g.id}>
