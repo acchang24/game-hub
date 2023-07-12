@@ -51,7 +51,7 @@ const GenresList = () => {
   });
 
   return (
-    <>
+    <div>
       <div className="genre-collapsible">
         <AiOutlineMenu
           className="menu-icon"
@@ -86,7 +86,7 @@ const GenresList = () => {
           </ul>
         </>
       )}
-    </>
+    </div>
   );
 };
 
