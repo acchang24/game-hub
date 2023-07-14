@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { CanceledError } from "axios";
 import { AiOutlineMenu } from "react-icons/ai";
-import apiClient from "../services/api-client";
+import getCroppedImage from "./getCroppedImage";
+import fetchData from "./fetchData";
 import Loader from "./Loader";
-import getCroppedImage from "./GetCroppedImage";
 import "./GenresList.css";
 
 // Interface describing game genre info
@@ -15,30 +14,10 @@ interface Genre {
 
 // Returns a list of game genres for the sidebar
 const GenresList = () => {
-  const [genres, setGenres] = useState<Genre[]>([]);
-  const [error, setError] = useState<string>("");
+  // Call fetch data to get array of data, error string, and loading status
+  const { data, error, isLoading } = fetchData<Genre>("/genres");
+  // Keep track of when to show genres list as collapsible
   const [genresActive, setGenresActive] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  // Fetch game genre data
-  useEffect(() => {
-    setIsLoading(true);
-    const controller = new AbortController();
-    apiClient
-      .get("/genres", { signal: controller.signal })
-      .then((results) => {
-        setGenres(results.data.results);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        if (err instanceof CanceledError) return;
-        else {
-          setError(err.message);
-        }
-        setIsLoading(false);
-      });
-    return () => controller.abort();
-  }, []);
 
   // Handles collapsibles when resizing
   useEffect(() => {
@@ -71,21 +50,21 @@ const GenresList = () => {
             </div>
           )}
           <ul className="genre-list">
-            {genres.map((g) => (
-              <li className="list-item" key={g.id}>
+            {data.map((genre) => (
+              <li className="list-item" key={genre.id}>
                 <button
                   className="genre-btn"
                   onClick={() => {
                     // TODO: handle this when game data fetching is ready
-                    console.log(g.name);
+                    console.log(genre.name);
                   }}
                 >
                   <img
                     className="genre-image"
-                    src={getCroppedImage(g.image_background)}
+                    src={getCroppedImage(genre.image_background)}
                     alt="genre image"
                   />
-                  {g.name}
+                  {genre.name}
                 </button>
               </li>
             ))}
