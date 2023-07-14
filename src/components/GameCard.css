@@ -1,0 +1,14 @@
+.game-card {
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  width: 100%;
+}
+.game-img {
+  display: block;
+  width: 100%;
+}
+.game-info {
+  background-color: #202020;
+  padding: 20px;
+}

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { CanceledError } from "axios";
 import apiClient from "../services/api-client";
-import getCroppedImage from "./GetCroppedImage";
+import GameCard from "./GameCard";
 import "./GameGrid.css";
 
 // Interface describing game info
-interface Game {
+export interface Game {
   id: number;
   name: string;
   background_image: string;
@@ -43,16 +43,7 @@ const GameGrid = () => {
         <h1 className="games-header">Games</h1>
         <div className="game-grid">
           {games.map((g) => {
-            return (
-              <div className="game-card" key={g.id}>
-                <img
-                  className="game-img"
-                  src={getCroppedImage(g.background_image)}
-                  alt="game image"
-                />
-                <div className="game-info">{g.name}</div>
-              </div>
-            );
+            return <GameCard game={g}></GameCard>;
           })}
         </div>
       </div>
