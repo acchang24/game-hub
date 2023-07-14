@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { CanceledError } from "axios";
 import apiClient from "../services/api-client";
 
+// Interface to pass a type in
+// when calling .get with axios
 interface FetchResponse<T> {
   results: T[];
 }
@@ -14,10 +16,12 @@ const fetchData = <T>(endPoint: string) => {
   const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  // Fetch data
   useEffect(() => {
     setIsLoading(true);
+    // AbortController for cancelling fetch requests
     const controller = new AbortController();
+
+    // Fetch data
     apiClient
       .get<FetchResponse<T>>(endPoint, { signal: controller.signal })
       .then((response) => {
