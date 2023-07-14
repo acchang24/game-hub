@@ -29,8 +29,8 @@ const Platforms = ({ game_id, platforms }: Props) => {
     <div className="platform-list" key={game_id}>
       {platforms.map((p) => {
         return (
-          <span className="platform" key={p.platform.id}>
-            {platformMap.get(p.platform.slug)}
+          <span className="platform" key={p.id}>
+            {platformMap.get(p.slug)}
           </span>
         );
       })}
