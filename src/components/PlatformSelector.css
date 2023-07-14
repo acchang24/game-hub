@@ -28,6 +28,7 @@
 .platform-dropdown {
   background-color: #1d1d1d;
   border-radius: 10px;
+  box-shadow: 0 0 5px 1px #ccc;
   margin-top: 10px;
   position: absolute;
   width: 250px;
