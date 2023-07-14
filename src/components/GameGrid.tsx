@@ -29,7 +29,6 @@ const GameGrid = () => {
     apiClient
       .get("/games", { signal: controller.signal })
       .then((results) => {
-        console.log(results.data.results);
         setGames(results.data.results);
       })
       .catch((err) => {

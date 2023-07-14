@@ -3,16 +3,16 @@ import { BsAndroid, BsPlaystation, BsXbox } from "react-icons/bs";
 import { SiNintendo } from "react-icons/si";
 import { FaLinux } from "react-icons/fa";
 import { MdPhoneIphone } from "react-icons/md";
-import { Game } from "./GameGrid";
-import getCroppedImage from "./GetCroppedImage";
-import "./GameCard.css";
-import Platforms from "./Platforms";
+import { Platform } from "./GameGrid";
+import "./Platforms.css";
 
-// Pass in Game prop for GameCards
+// Pass in game's id and platform info for platform's props
 interface Props {
-  game: Game;
+  game_id: number;
+  platforms: Platform[];
 }
 
+// Map icons to platforms
 const platformMap = new Map();
 platformMap.set("pc", <AiFillWindows></AiFillWindows>);
 platformMap.set("playstation", <BsPlaystation></BsPlaystation>);
@@ -23,24 +23,19 @@ platformMap.set("linux", <FaLinux></FaLinux>);
 platformMap.set("android", <BsAndroid></BsAndroid>);
 platformMap.set("ios", <MdPhoneIphone></MdPhoneIphone>);
 
-// GameCard component returns info about a game in a card
-const GameCard = ({ game }: Props) => {
+// Platforms component returns a game's platform info as icons
+const Platforms = ({ game_id, platforms }: Props) => {
   return (
-    <div className="game-card">
-      <img
-        className="game-img"
-        src={getCroppedImage(game.background_image)}
-        alt={game.name + " image"}
-      />
-      <div className="game-info">
-        {game.name}
-        <Platforms
-          game_id={game.id}
-          platforms={game.parent_platforms}
-        ></Platforms>
-      </div>
+    <div className="platform-list" key={game_id}>
+      {platforms.map((p) => {
+        return (
+          <span className="platform" key={p.platform.id}>
+            {platformMap.get(p.platform.slug)}
+          </span>
+        );
+      })}
     </div>
   );
 };
 
-export default GameCard;
+export default Platforms;
