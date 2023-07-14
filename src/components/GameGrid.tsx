@@ -4,11 +4,17 @@ import apiClient from "../services/api-client";
 import GameCard from "./GameCard";
 import "./GameGrid.css";
 
+// Interface describing platform info
+export interface Platform {
+  platform: { id: number; name: string; slug: string };
+}
+
 // Interface describing game info
 export interface Game {
   id: number;
   name: string;
   background_image: string;
+  parent_platforms: Platform[];
 }
 
 // GameGrid component returns a component that displays game content in a grid
@@ -43,7 +49,7 @@ const GameGrid = () => {
         <h1 className="games-header">Games</h1>
         <div className="game-grid">
           {games.map((g) => {
-            return <GameCard game={g}></GameCard>;
+            return <GameCard game={g} key={g.id}></GameCard>;
           })}
         </div>
       </div>

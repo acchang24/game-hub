@@ -12,3 +12,9 @@
   background-color: #202020;
   padding: 20px;
 }
+.platform-list {
+    margin-top: 10px;
+}
+.platform {
+    margin-right: 10px;
+}
