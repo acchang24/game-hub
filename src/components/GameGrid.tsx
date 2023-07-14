@@ -1,6 +1,6 @@
 import GameCard from "./GameCard";
 import Loader from "./Loader";
-import fetchData from "./fetchData";
+import fetchData from "../utility/fetchData";
 import "./GameGrid.css";
 
 // Interface describing platform info

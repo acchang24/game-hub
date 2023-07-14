@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
-import getCroppedImage from "./getCroppedImage";
-import fetchData from "./fetchData";
+import getCroppedImage from "../utility/getCroppedImage";
+import fetchData from "../utility/fetchData";
 import Loader from "./Loader";
 import "./GenresList.css";
 
