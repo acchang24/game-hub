@@ -12,8 +12,13 @@ interface Genre {
   name: string;
 }
 
+// onSelect prop to pass data to App component
+interface Props {
+  onSelect: (genre: string) => void;
+}
+
 // Returns a list of game genres for the sidebar
-const GenresList = () => {
+const GenresList = ({ onSelect }: Props) => {
   // Call fetch data to get array of data, error string, and loading status
   const { data, error, isLoading } = fetchData<Genre>("/genres");
   // Keep track of when to show genres list as collapsible
@@ -55,8 +60,8 @@ const GenresList = () => {
                 <button
                   className="genre-btn"
                   onClick={() => {
-                    // TODO: handle this when game data fetching is ready
-                    console.log(genre.name);
+                    // Pass selected genre to App component
+                    onSelect(genre.name);
                   }}
                 >
                   <img

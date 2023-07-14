@@ -6,10 +6,11 @@ import "./Selector.css";
 interface Props {
   data: { id: number; name: string }[];
   placeHolder: string;
+  onSelect: (platform: string) => void;
 }
 
 // Selector component returns a dropdown list
-const Selector = ({ data, placeHolder }: Props) => {
+const Selector = ({ data, placeHolder, onSelect }: Props) => {
   // Keep track of when to show list items, and the currently selected item
   const [itemsShown, setItemsShown] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<string>("");
@@ -58,7 +59,9 @@ const Selector = ({ data, placeHolder }: Props) => {
               <button
                 className="item-btn"
                 onClick={() => {
+                  // Set selected item to empty string and pass to App component
                   setSelectedItem("");
+                  onSelect("");
                   setItemsShown(false);
                 }}
               >
@@ -71,8 +74,10 @@ const Selector = ({ data, placeHolder }: Props) => {
                   <button
                     className="item-btn"
                     onClick={() => {
-                      setItemsShown(false);
+                       // Set selected item and pass to App component
                       setSelectedItem(item.name);
+                      onSelect(item.name);
+                      setItemsShown(false);
                     }}
                   >
                     <div>{item.name}</div>

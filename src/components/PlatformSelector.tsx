@@ -2,8 +2,13 @@ import fetchData from "../utility/fetchData";
 import { Platform } from "./GameGrid";
 import Selector from "./Selector";
 
+// onSelect prop to pass data to App component
+interface Props {
+  onSelect: (platform: string) => void;
+}
+
 // Returns a drop down selector to filter game platforms
-const PlatformSelector = () => {
+const PlatformSelector = ({ onSelect }: Props) => {
   // Keep track/fetch platform data
   const { data } = fetchData<Platform>("/platforms/lists/parents");
 
@@ -13,7 +18,13 @@ const PlatformSelector = () => {
     name: platform.name,
   }));
 
-  return <Selector data={platforms} placeHolder="Platforms"></Selector>;
+  return (
+    <Selector
+      data={platforms}
+      placeHolder="Platforms"
+      onSelect={onSelect}
+    ></Selector>
+  );
 };
 
 export default PlatformSelector;

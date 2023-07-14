@@ -3,8 +3,13 @@ import { BsSearch } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
 import "./Search.css";
 
+// onSubmit prop to send search queries to App component
+interface Props {
+  onSubmit: (searchQuery: string) => void;
+}
+
 // Returns a search bar for searching games by name
-const Search = () => {
+const Search = ({ onSubmit }: Props) => {
   // useRef to keep track of search inputs
   const searchRef = useRef<HTMLInputElement>(null);
   // useState to keep track whether or not the search field is filled out
@@ -15,9 +20,8 @@ const Search = () => {
       onSubmit={(event) => {
         // Prevent reloads
         event.preventDefault();
-        // TODO: handle this when data fetch is implemented
         if (searchRef.current) {
-          console.log(searchRef.current.value);
+          onSubmit(searchRef.current.value);
         }
       }}
     >

@@ -8,13 +8,25 @@ import PlatformSelector from "./components/PlatformSelector";
 function App() {
   return (
     <>
-      <NavBar></NavBar>
+      <NavBar
+        onSubmit={(searchQuery) => {
+          console.log(searchQuery);
+        }}
+      ></NavBar>
       <div className="grid-container">
-        <GenresList></GenresList>
+        <GenresList
+          onSelect={(genre) => {
+            console.log(genre);
+          }}
+        ></GenresList>
         <div>
           <div className="main-header">
             <h1 className="games-header">Games</h1>
-            <PlatformSelector></PlatformSelector>
+            <PlatformSelector
+              onSelect={(platform) => {
+                console.log(platform);
+              }}
+            ></PlatformSelector>
           </div>
           <GameGrid></GameGrid>
         </div>
