@@ -19,16 +19,11 @@ export interface Game {
 // GameGrid component returns a component that displays game content in a grid
 const GameGrid = () => {
   // Call fetchGame to get array of games, error string, and loading status
-  const { data, error, isLoading } = fetchData<Game>("/games");
+  const { data, error } = fetchData<Game>("/games");
 
   // Return the grid of games
   return (
     <>
-      {isLoading && (
-        <div className="games-loader">
-          <Loader></Loader>
-        </div>
-      )}
       {error && <p>{error}</p>}
       <div className="grid">
         <h1 className="games-header">Games</h1>
