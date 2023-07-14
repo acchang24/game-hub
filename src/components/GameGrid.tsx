@@ -3,6 +3,7 @@ import { CanceledError } from "axios";
 import apiClient from "../services/api-client";
 import GameCard from "./GameCard";
 import "./GameGrid.css";
+import Loader from "./Loader";
 
 // Interface describing platform info
 export interface Platform {
@@ -22,20 +23,24 @@ const GameGrid = () => {
   // Keep track of games data/errors that are fetched
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // Fetch game data
   useEffect(() => {
+    setIsLoading(true);
     const controller = new AbortController();
     apiClient
       .get("/games", { signal: controller.signal })
       .then((results) => {
         setGames(results.data.results);
+        setIsLoading(false);
       })
       .catch((err) => {
         if (err instanceof CanceledError) return;
         else {
           setError(err.message);
         }
+        setIsLoading(false);
       });
     return () => controller.abort();
   }, []);
@@ -43,6 +48,11 @@ const GameGrid = () => {
   // Return the grid of games
   return (
     <>
+      {isLoading && (
+        <div className="games-loader">
+          <Loader></Loader>
+        </div>
+      )}
       {error && <p>{error}</p>}
       <div className="grid">
         <h1 className="games-header">Games</h1>

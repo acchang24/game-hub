@@ -66,7 +66,7 @@ const GenresList = () => {
           <h2 className="genre-header">Genres</h2>
           {error && <p>{error}</p>}
           {isLoading && (
-            <div className="loader">
+            <div className="genre-loader">
               <Loader></Loader>
             </div>
           )}

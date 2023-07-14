@@ -1,3 +1,6 @@
+.games-loader {
+  transform: scale(0.75);
+}
 .grid {
   padding: 20px 30px;
 }
