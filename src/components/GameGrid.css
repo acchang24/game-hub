@@ -1,3 +1,42 @@
+.grid {
+  padding: 20px 30px;
+}
+.games-header {
+  margin: 0;
+  font-size: 2.5rem;
+}
 .game-grid {
-  margin-top: 5px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+  padding: 20px 0px;
+}
+.game-card {
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  width: 100%;
+}
+.game-img {
+  display: block;
+  width: 100%;
+}
+.game-info {
+  background-color: #202020;
+  padding: 20px;
+}
+@media screen and (min-width: 768px) {
+  .game-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .game-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (min-width: 1400px) {
+  .game-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

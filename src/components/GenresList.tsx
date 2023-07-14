@@ -3,6 +3,7 @@ import { CanceledError } from "axios";
 import { AiOutlineMenu } from "react-icons/ai";
 import apiClient from "../services/api-client";
 import Loader from "./Loader";
+import getCroppedImage from "./GetCroppedImage";
 import "./GenresList.css";
 
 // Interface describing game genre info
@@ -10,13 +11,6 @@ interface Genre {
   id: number;
   image_background: string;
   name: string;
-}
-
-// Returns a cropped image url given its path
-function getCroppedImage(urlPath: string) {
-  const target = "media/";
-  const index = urlPath.indexOf(target) + target.length;
-  return urlPath.slice(0, index) + "crop/600/400/" + urlPath.slice(index);
 }
 
 // Returns a list of game genres for the sidebar
