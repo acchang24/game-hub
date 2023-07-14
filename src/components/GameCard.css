@@ -12,3 +12,7 @@
   background-color: #202020;
   padding: 20px;
 }
+.game-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+}

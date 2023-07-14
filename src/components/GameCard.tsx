@@ -33,7 +33,7 @@ const GameCard = ({ game }: Props) => {
         alt={game.name + " image"}
       />
       <div className="game-info">
-        {game.name}
+        <span className="game-name">{game.name}</span>
         <Platforms
           game_id={game.id}
           platforms={game.parent_platforms}
