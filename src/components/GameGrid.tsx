@@ -1,5 +1,4 @@
 import GameCard from "./GameCard";
-import Loader from "./Loader";
 import fetchData from "../utility/fetchData";
 import "./GameGrid.css";
 
