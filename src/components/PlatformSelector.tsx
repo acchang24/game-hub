@@ -34,22 +34,22 @@ const PlatformSelector = () => {
   clickOutside(ref);
 
   return (
-    <>
+    <div ref={ref} className="selector">
       <button
         className="selector-btn"
         onClick={() => {
           setPlatformsShown(!platformsShown);
         }}
       >
-        <div className="selector">
+        <div className="platform-selector">
           <div>{currentPlatform === "" ? "Platforms" : currentPlatform}</div>
-          <div className="chevron">
+          <div className="chevron-icon">
             <BsChevronDown></BsChevronDown>
           </div>
         </div>
       </button>
       {platformsShown && (
-        <div className="platform-dropdown" ref={ref}>
+        <div className="platform-dropdown">
           <ul className="platform-list">
             <li key={0}>
               <button
@@ -80,7 +80,7 @@ const PlatformSelector = () => {
           </ul>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

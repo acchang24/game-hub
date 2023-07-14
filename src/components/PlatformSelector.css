@@ -1,3 +1,7 @@
+.selector {
+  display: inline-block;
+}
+
 .selector-btn {
   background-color: #202020;
   border-radius: 10px;
@@ -12,13 +16,13 @@
 .selector-btn:focus {
   background-color: #333333;
 }
-.selector {
+.platform-selector {
   align-items: center;
   display: flex;
   justify-content: center;
   padding-left: 5px;
 }
-.chevron {
+.chevron-icon {
   padding: 0 5px;
 }
 .platform-dropdown {
