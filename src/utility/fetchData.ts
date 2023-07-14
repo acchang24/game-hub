@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { CanceledError } from "axios";
-import apiClient from "./api-client";
+import apiClient from "./apiClient";
 
 // Interface to pass a type in
 // when calling .get with axios
