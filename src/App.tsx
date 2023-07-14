@@ -3,6 +3,7 @@ import "normalize.css";
 import NavBar from "./components/NavBar";
 import GenresList from "./components/GenresList";
 import GameGrid from "./components/GameGrid";
+import PlatformSelector from "./components/PlatformSelector";
 
 function App() {
   return (
@@ -10,7 +11,13 @@ function App() {
       <NavBar></NavBar>
       <div className="grid-container">
         <GenresList></GenresList>
-        <GameGrid></GameGrid>
+        <div>
+          <div className="main-header">
+            <h1 className="games-header">Games</h1>
+            <PlatformSelector></PlatformSelector>
+          </div>
+          <GameGrid></GameGrid>
+        </div>
       </div>
     </>
   );

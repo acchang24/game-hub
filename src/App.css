@@ -3,24 +3,22 @@ html {
   font-family: Arial, Helvetica, sans-serif;
   background: #111;
 }
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-/* .side-panel {
-  background-color: cyan;
-  text-align: Left;
-  padding-left: 25px;
-} */
-.main {
-  margin-top: 5px;
-  /* background-color: magenta; */
-}
 form {
   width: 100%;
 }
 input {
   width: 100%;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.main-header {
+  padding: 10px 30px;
+}
+.games-header {
+  margin: 0;
+  font-size: 2.5rem;
 }
 @media screen and (min-width: 768px) {
   .grid-container {

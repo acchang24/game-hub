@@ -1,18 +1,11 @@
 .games-loader {
   transform: scale(0.75);
 }
-.grid {
-  padding: 20px 30px;
-}
-.games-header {
-  margin: 0;
-  font-size: 2.5rem;
-}
 .game-grid {
   display: grid;
   gap: 20px;
   grid-template-columns: 1fr;
-  padding: 20px 0px;
+  padding: 30px;
 }
 
 @media screen and (min-width: 768px) {

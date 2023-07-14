@@ -1,6 +1,6 @@
 import fetchData from "../utility/fetchData";
 import GameCard from "./GameCard";
-import PlatformSelector from "./PlatformSelector";
+// import PlatformSelector from "./PlatformSelector";
 import "./GameGrid.css";
 
 // Interface describing platform info
@@ -27,14 +27,10 @@ const GameGrid = () => {
   return (
     <>
       {error && <p>{error}</p>}
-      <div className="grid">
-        <h1 className="games-header">Games</h1>
-        <PlatformSelector></PlatformSelector>
-        <div className="game-grid">
-          {data.map((games) => {
-            return <GameCard game={games} key={games.id}></GameCard>;
-          })}
-        </div>
+      <div className="game-grid">
+        {data.map((games) => {
+          return <GameCard game={games} key={games.id}></GameCard>;
+        })}
       </div>
     </>
   );
