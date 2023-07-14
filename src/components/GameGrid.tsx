@@ -5,7 +5,9 @@ import "./GameGrid.css";
 
 // Interface describing platform info
 export interface Platform {
-  platform: { id: number; name: string; slug: string };
+  id: number;
+  name: string;
+  slug: string;
 }
 
 // Interface describing game info
@@ -13,7 +15,7 @@ export interface Game {
   id: number;
   name: string;
   background_image: string;
-  parent_platforms: Platform[];
+  parent_platforms: { platform: Platform }[];
 }
 
 // GameGrid component returns a component that displays game content in a grid

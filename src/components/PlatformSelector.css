@@ -4,46 +4,46 @@
   border: 0;
   color: #ccc;
   cursor: pointer;
+  margin-top: 10px;
   padding: 10px;
   transition: background-color 0.3s;
-  margin-top: 10px;
 }
 .selector-btn:hover,
 .selector-btn:focus {
   background-color: #333333;
 }
 .selector {
+  align-items: center;
   display: flex;
   justify-content: center;
-  align-items: center;
   padding-left: 5px;
 }
 .chevron {
   padding: 0 5px;
 }
 .platform-dropdown {
-  width: 250px;
   background-color: #1d1d1d;
   border-radius: 10px;
-  position: absolute;
   margin-top: 10px;
+  position: absolute;
+  width: 250px;
 }
 .platform-list {
-  padding-left: 0;
-  margin: 5px 0;
   list-style: none;
+  margin: 5px 0;
+  padding-left: 0;
 }
 .platform-btn {
-  cursor: pointer;
-  text-align: start;
-  border: 0;
-  outline: 0;
-  color: #ccc;
   background-color: #1d1d1d;
-  width: 100%;
-  transition: background-color 0.15s;
-  padding: 10px;
+  border: 0;
+  color: #ccc;
+  cursor: pointer;
   margin: 5px 0;
+  outline: 0;
+  padding: 10px;
+  text-align: start;
+  transition: background-color 0.15s;
+  width: 100%;
 }
 .platform-btn:hover {
   background-color: #2b2b2b;

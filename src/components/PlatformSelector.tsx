@@ -1,31 +1,60 @@
-import { BsChevronDown } from "react-icons/bs";
 import { useState } from "react";
+import { BsChevronDown } from "react-icons/bs";
+import fetchData from "../utility/fetchData";
+import { Platform } from "./GameGrid";
 import "./PlatformSelector.css";
 
+// Returns a drop down selector to filter game platforms
 const PlatformSelector = () => {
-  const [isClicked, setIsClicked] = useState<boolean>(false);
+  // Keep track of platform data, when to show it, and the currently selected platform
+  const { data } = fetchData<Platform>("/platforms/lists/parents");
+  const [platformsShown, setPlatformsShown] = useState<boolean>(false);
+  const [currentPlatform, setCurrentPlatform] = useState<string>("");
+
   return (
     <>
       <button
         className="selector-btn"
         onClick={() => {
-          console.log("Clicked");
-          setIsClicked(!isClicked);
+          setPlatformsShown(!platformsShown);
         }}
       >
         <div className="selector">
-          <div>Platforms</div>
+          <div>{currentPlatform === "" ? "Platforms" : currentPlatform}</div>
           <div className="chevron">
             <BsChevronDown></BsChevronDown>
           </div>
         </div>
       </button>
-      {isClicked && (
+      {platformsShown && (
         <div className="platform-dropdown">
           <ul className="platform-list">
-            <li><button className="platform-btn"><div>Testing</div></button></li>
-            <li><button className="platform-btn"><div>Testing</div></button></li>
-            <li><button className="platform-btn"><div>Testing</div></button></li>
+            <li key={0}>
+              <button
+                className="platform-btn"
+                onClick={() => {
+                  setCurrentPlatform("");
+                  setPlatformsShown(false);
+                }}
+              >
+                <div>None</div>
+              </button>
+            </li>
+            {data.map((platform) => {
+              return (
+                <li key={platform.id}>
+                  <button
+                    className="platform-btn"
+                    onClick={() => {
+                      setPlatformsShown(false);
+                      setCurrentPlatform(platform.name);
+                    }}
+                  >
+                    <div>{platform.name}</div>
+                  </button>
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}
