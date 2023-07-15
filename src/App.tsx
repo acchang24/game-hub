@@ -1,34 +1,49 @@
+import NavBar from "./components/NavBar";
+import GenresList, { Genre } from "./components/GenresList";
+import GameGrid, { Platform } from "./components/GameGrid";
+import PlatformSelector from "./components/PlatformSelector";
 import "./App.css";
 import "normalize.css";
-import NavBar from "./components/NavBar";
-import GenresList from "./components/GenresList";
-import GameGrid from "./components/GameGrid";
-import PlatformSelector from "./components/PlatformSelector";
+import { useState } from "react";
+
+// Interface describing queries for searching/filtering through games
+export interface GameQuery {
+  genre: Genre | null;
+  platform: Platform | null;
+  searchText: string;
+}
 
 function App() {
+  // Keep track of the game query's state
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+
+  const heading = `${gameQuery.platform?.name || ""} ${
+    gameQuery.genre?.name || ""
+  } Games`;
+
   return (
     <>
       <NavBar
-        onSubmit={(searchQuery) => {
-          console.log(searchQuery);
+        onSubmit={(searchText) => {
+          setGameQuery({ ...gameQuery, searchText });
         }}
       ></NavBar>
       <div className="grid-container">
         <GenresList
           onSelect={(genre) => {
-            console.log(genre);
+            setGameQuery({ ...gameQuery, genre });
           }}
         ></GenresList>
         <div>
           <div className="main-header">
-            <h1 className="games-header">Games</h1>
+            <h1 className="games-header">{heading}</h1>
             <PlatformSelector
               onSelect={(platform) => {
-                console.log(platform);
+                setGameQuery({ ...gameQuery, platform });
               }}
             ></PlatformSelector>
           </div>
-          <GameGrid></GameGrid>
+          <GameGrid gameQuery={gameQuery}></GameGrid>
         </div>
       </div>
     </>

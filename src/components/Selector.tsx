@@ -3,14 +3,14 @@ import { BsChevronDown } from "react-icons/bs";
 import "./Selector.css";
 
 // Props to pass in list data as well as placeholder info
-interface Props {
-  data: { id: number; name: string }[];
+interface Props<T> {
+  data: { id: number; name: string, slug: string }[];
   placeHolder: string;
-  onSelect: (platform: string) => void;
+  onSelect: (platform: T) => void;
 }
 
 // Selector component returns a dropdown list
-const Selector = ({ data, placeHolder, onSelect }: Props) => {
+const Selector = <T,>({ data, placeHolder, onSelect }: Props<T>) => {
   // Keep track of when to show list items, and the currently selected item
   const [itemsShown, setItemsShown] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<string>("");
@@ -61,7 +61,7 @@ const Selector = ({ data, placeHolder, onSelect }: Props) => {
                 onClick={() => {
                   // Set selected item to empty string and pass to App component
                   setSelectedItem("");
-                  onSelect("");
+                  onSelect({} as T);
                   setItemsShown(false);
                 }}
               >
@@ -74,9 +74,9 @@ const Selector = ({ data, placeHolder, onSelect }: Props) => {
                   <button
                     className="item-btn"
                     onClick={() => {
-                       // Set selected item and pass to App component
+                      // Set selected item and pass to App component
                       setSelectedItem(item.name);
-                      onSelect(item.name);
+                      onSelect(item as T);
                       setItemsShown(false);
                     }}
                   >

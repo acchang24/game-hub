@@ -6,7 +6,7 @@ import Loader from "./Loader";
 import "./GenresList.css";
 
 // Interface describing game genre info
-interface Genre {
+export interface Genre {
   id: number;
   image_background: string;
   name: string;
@@ -14,7 +14,7 @@ interface Genre {
 
 // onSelect prop to pass data to App component
 interface Props {
-  onSelect: (genre: string) => void;
+  onSelect: (genre: Genre) => void;
 }
 
 // Returns a list of game genres for the sidebar
@@ -61,7 +61,7 @@ const GenresList = ({ onSelect }: Props) => {
                   className="genre-btn"
                   onClick={() => {
                     // Pass selected genre to App component
-                    onSelect(genre.name);
+                    onSelect(genre);
                   }}
                 >
                   <img
