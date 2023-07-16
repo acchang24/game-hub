@@ -1,5 +1,6 @@
 .selector {
   display: inline-block;
+  margin-right: 20px;
 }
 .selector-btn {
   background-color: #202020;

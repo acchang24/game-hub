@@ -10,6 +10,7 @@ const fetchGames = (gameQuery: GameQuery) => {
         genres: gameQuery.genre?.id,
         platforms: gameQuery.platform?.id,
         search: gameQuery.searchText,
+        ordering: gameQuery.order,
       },
     },
     [gameQuery]

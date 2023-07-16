@@ -2,23 +2,22 @@ import { useEffect, useRef, useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import "./Selector.css";
 
-// Props to pass in list data as well as placeholder info
+// Props to pass in list data as well as selected item's name
 interface Props<T> {
-  data: { id: number; name: string, slug: string }[];
-  placeHolder: string;
-  onSelect: (platform: T) => void;
+  data: { id: number; name: string; }[];
+  selectedName: string;
+  onSelect: (item: T) => void;
 }
 
 // Selector component returns a dropdown list
-const Selector = <T,>({ data, placeHolder, onSelect }: Props<T>) => {
-  // Keep track of when to show list items, and the currently selected item
+const Selector = <T,>({ data, selectedName, onSelect }: Props<T>) => {
+  // Keep track of when to show list items
   const [itemsShown, setItemsShown] = useState<boolean>(false);
-  const [selectedItem, setSelectedItem] = useState<string>("");
 
   // Reference dropdown div
   const ref = useRef<HTMLDivElement>(null);
 
-  // Handles clicks outside of the platforms div and hides it
+  // Handles clicks outside of the dropdown menu and hides it
   const clickOutside = (ref: any) => {
     useEffect(() => {
       function handleClickOutside(event: any) {
@@ -46,7 +45,7 @@ const Selector = <T,>({ data, placeHolder, onSelect }: Props<T>) => {
         }}
       >
         <div className="item-selector">
-          <div>{selectedItem === "" ? placeHolder : selectedItem}</div>
+          <div>{selectedName}</div>
           <div className="chevron-icon">
             <BsChevronDown></BsChevronDown>
           </div>
@@ -59,8 +58,7 @@ const Selector = <T,>({ data, placeHolder, onSelect }: Props<T>) => {
               <button
                 className="item-btn"
                 onClick={() => {
-                  // Set selected item to empty string and pass to App component
-                  setSelectedItem("");
+                  // Pass selected item to App component
                   onSelect({} as T);
                   setItemsShown(false);
                 }}
@@ -74,8 +72,7 @@ const Selector = <T,>({ data, placeHolder, onSelect }: Props<T>) => {
                   <button
                     className="item-btn"
                     onClick={() => {
-                      // Set selected item and pass to App component
-                      setSelectedItem(item.name);
+                      // Pass selected item to App component
                       onSelect(item as T);
                       setItemsShown(false);
                     }}
