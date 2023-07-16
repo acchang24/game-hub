@@ -1,11 +1,17 @@
 import fetchData from "../utility/fetchData";
-import { Platform } from "./GameGrid";
 import Selector from "./Selector";
+
+// Interface describing platform info
+export interface Platform {
+  id: number;
+  name: string;
+  slug: string;
+}
 
 // onSelect prop to pass data to App component
 interface Props {
   onSelect: (platform: Platform) => void;
-  selectedPlatform: Platform;
+  selectedPlatform: Platform | null;
 }
 
 // Returns a drop down selector to filter game platforms
@@ -13,20 +19,10 @@ const PlatformSelector = ({ onSelect, selectedPlatform }: Props) => {
   // Keep track/fetch platform data
   const { data } = fetchData<Platform>("/platforms/lists/parents");
 
-  let selectedName = "";
-  if (
-    selectedPlatform === undefined ||
-    Object.keys(selectedPlatform).length === 0
-  ) {
-    selectedName = "Platform";
-  } else {
-    selectedName = selectedPlatform.name;
-  }
-
   return (
     <Selector
       data={data}
-      selectedName={selectedName}
+      selectedName={selectedPlatform?.name || "Platforms"}
       onSelect={onSelect}
     ></Selector>
   );

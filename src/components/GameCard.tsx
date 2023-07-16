@@ -20,8 +20,7 @@ const GameCard = ({ game }: Props) => {
       <div className="game-info">
         <span className="game-name">{game.name}</span>
         <Platforms
-          game_id={game.id}
-          platforms={game.parent_platforms.map((p) => p.platform)}
+          platforms={game.parent_platforms?.map((p) => p.platform)}
         ></Platforms>
       </div>
     </div>

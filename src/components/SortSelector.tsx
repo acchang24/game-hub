@@ -8,10 +8,10 @@ export interface SortOrder {
 
 interface Props {
   onSelect: (sortOrder: SortOrder) => void;
-  selectedOrder: string;
+  sortOrder: string;
 }
 
-const SortSelector = ({ onSelect, selectedOrder }: Props) => {
+const SortSelector = ({ onSelect, sortOrder }: Props) => {
   const sortOrders: SortOrder[] = [
     { id: 0, name: "Relevance", value: "" },
     { id: 1, name: "Date added", value: "-added" },
@@ -21,15 +21,16 @@ const SortSelector = ({ onSelect, selectedOrder }: Props) => {
     { id: 5, name: "Average rating", value: "-rating" },
   ];
 
-  let selectedName = "Order by: ";
-  if (selectedOrder !== undefined) {
-    selectedName += selectedOrder;
-  } 
+  const currentSortOrder = sortOrders.find(
+    (order) => order.value === sortOrder
+  );
+  
+  const selectName: string = currentSortOrder?.name || "Relevance"
 
   return (
     <Selector
       data={sortOrders}
-      selectedName={selectedName}
+      selectedName={"Sort by: " + selectName}
       onSelect={onSelect}
     ></Selector>
   );

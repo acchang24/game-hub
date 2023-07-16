@@ -1,14 +1,8 @@
 import { GameQuery } from "../App";
 import fetchGames from "../utility/fetchGame";
 import GameCard from "./GameCard";
+import { Platform } from "./PlatformSelector";
 import "./css/GameGrid.css";
-
-// Interface describing platform info
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
 
 // Interface describing game info
 export interface Game {

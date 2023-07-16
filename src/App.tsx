@@ -1,19 +1,18 @@
+import { useState } from "react";
 import NavBar from "./components/NavBar";
 import GenresList, { Genre } from "./components/GenresList";
-import GameGrid, { Platform } from "./components/GameGrid";
-import PlatformSelector from "./components/PlatformSelector";
+import PlatformSelector, { Platform } from "./components/PlatformSelector";
+import GameGrid from "./components/GameGrid";
+import SortSelector from "./components/SortSelector";
 import "./App.css";
 import "normalize.css";
-import { useState } from "react";
-import SortSelector from "./components/SortSelector";
 
 // Interface describing queries for searching/filtering through games
 export interface GameQuery {
   genre: Genre;
-  platform: Platform;
+  platform: Platform | null;
   searchText: string;
-  order: string;
-  orderName: string;
+  sortOrder: string;
 }
 
 function App() {
@@ -28,13 +27,13 @@ function App() {
     <>
       <NavBar
         onSubmit={(searchText) => {
-          setGameQuery({ ...gameQuery, searchText });
+          setGameQuery({ ...gameQuery, searchText: searchText });
         }}
       ></NavBar>
       <div className="grid-container">
         <GenresList
           onSelect={(genre) => {
-            setGameQuery({ ...gameQuery, genre });
+            setGameQuery({ ...gameQuery, genre: genre });
           }}
         ></GenresList>
         <div>
@@ -43,19 +42,18 @@ function App() {
             <div className="selectors">
               <PlatformSelector
                 onSelect={(platform) => {
-                  setGameQuery({ ...gameQuery, platform });
+                  setGameQuery({ ...gameQuery, platform: platform });
                 }}
                 selectedPlatform={gameQuery.platform}
               ></PlatformSelector>
               <SortSelector
-                onSelect={(o) => {
+                onSelect={(order) => {
                   setGameQuery({
                     ...gameQuery,
-                    order: o.value,
-                    orderName: o.name,
+                    sortOrder: order.value,
                   });
                 }}
-                selectedOrder={gameQuery.orderName}
+                sortOrder={gameQuery.sortOrder}
               ></SortSelector>
             </div>
           </div>

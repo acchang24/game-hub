@@ -1,14 +1,13 @@
 import { AiFillApple, AiFillWindows } from "react-icons/ai";
-import { BsAndroid, BsPlaystation, BsXbox } from "react-icons/bs";
+import { BsAndroid, BsPlaystation, BsXbox, BsGlobe } from "react-icons/bs";
 import { SiNintendo } from "react-icons/si";
 import { FaLinux } from "react-icons/fa";
 import { MdPhoneIphone } from "react-icons/md";
-import { Platform } from "./GameGrid";
+import { Platform } from "./PlatformSelector";
 import "./css/Platforms.css";
 
 // Pass in game's id and platform info for platform's props
 interface Props {
-  game_id: number;
   platforms: Platform[];
 }
 
@@ -22,11 +21,12 @@ platformMap.set("mac", <AiFillApple></AiFillApple>);
 platformMap.set("linux", <FaLinux></FaLinux>);
 platformMap.set("android", <BsAndroid></BsAndroid>);
 platformMap.set("ios", <MdPhoneIphone></MdPhoneIphone>);
+platformMap.set("web", <BsGlobe></BsGlobe>);
 
 // Platforms component returns a game's platform info as icons
-const Platforms = ({ game_id, platforms }: Props) => {
+const Platforms = ({ platforms = [] }: Props) => {
   return (
-    <div className="platform-list" key={game_id}>
+    <div className="platform-list">
       {platforms.map((p) => {
         return (
           <span className="platform" key={p.id}>
