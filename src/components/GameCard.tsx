@@ -1,7 +1,7 @@
 import { Game } from "./GameGrid";
 import Platforms from "./Platforms";
 import getCroppedImage from "../utility/getCroppedImage";
-import "./GameCard.css";
+import "./css/GameCard.css";
 
 // Pass in Game prop for GameCards
 interface Props {

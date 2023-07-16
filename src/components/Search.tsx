@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
-import "./Search.css";
+import "./css/Search.css";
 
 // onSubmit prop to send search queries to App component
 interface Props {

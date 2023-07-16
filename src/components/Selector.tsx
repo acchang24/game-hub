@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
-import "./Selector.css";
+import "./css/Selector.css";
 
 // Props to pass in list data as well as selected item's name
 interface Props<T> {

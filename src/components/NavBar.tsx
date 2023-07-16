@@ -1,6 +1,6 @@
-import "./NavBar.css";
 import logo from "../assets/logo.svg";
 import Search from "./Search";
+import "./css/NavBar.css";
 
 // onSubmit prop to send search queries to App component
 interface Props {

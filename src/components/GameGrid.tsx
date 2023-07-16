@@ -1,7 +1,7 @@
 import { GameQuery } from "../App";
 import fetchGames from "../utility/fetchGame";
 import GameCard from "./GameCard";
-import "./GameGrid.css";
+import "./css/GameGrid.css";
 
 // Interface describing platform info
 export interface Platform {

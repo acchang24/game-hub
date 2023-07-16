@@ -3,7 +3,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import getCroppedImage from "../utility/getCroppedImage";
 import fetchData from "../utility/fetchData";
 import Loader from "./Loader";
-import "./GenresList.css";
+import "./css/GenresList.css";
 
 // Interface describing game genre info
 export interface Genre {
