@@ -1,6 +1,7 @@
 import { useState } from "react";
 import NavBar from "./components/NavBar";
 import GenresList, { Genre } from "./components/GenresList";
+import GamesHeading from "./components/GamesHeading";
 import PlatformSelector, { Platform } from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
 import GameGrid from "./components/GameGrid";
@@ -19,10 +20,6 @@ function App() {
   // Keep track of the game query's state
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
-  const heading = `${gameQuery.platform?.name || ""} ${
-    gameQuery.genre?.name || ""
-  } Games`;
-
   return (
     <>
       <NavBar
@@ -38,7 +35,7 @@ function App() {
         ></GenresList>
         <div>
           <div className="main-header">
-            <h1 className="games-header">{heading}</h1>
+            <GamesHeading gameQuery={gameQuery}></GamesHeading>
             <div className="selectors">
               <PlatformSelector
                 onSelect={(platform) => {
