@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
+import useData from "../hooks/useData";
 import getCroppedImage from "../utility/getCroppedImage";
-import fetchData from "../utility/fetchData";
 import Loader from "./Loader";
 import "./css/GenresList.css";
 
@@ -12,15 +12,15 @@ export interface Genre {
   name: string;
 }
 
-// onSelect prop to pass data to App component
+// onSelect prop to pass the selected genre object to App component
 interface Props {
   onSelect: (genre: Genre) => void;
 }
 
 // Returns a list of game genres for the sidebar
 const GenresList = ({ onSelect }: Props) => {
-  // Call fetch data to get array of data, error string, and loading status
-  const { data, error, isLoading } = fetchData<Genre>("/genres");
+  // Call use data hook to get array of data, error string, and loading status
+  const { data, error, isLoading } = useData<Genre>("/genres");
   // Keep track of when to show genres list as collapsible
   const [genresActive, setGenresActive] = useState<boolean>(false);
 

@@ -1,6 +1,6 @@
-import { Game } from "./GameGrid";
-import Platforms from "./Platforms";
+import { Game } from "../hooks/useGame";
 import getCroppedImage from "../utility/getCroppedImage";
+import PlatformsList from "./PlatformsList";
 import "./css/GameCard.css";
 
 // Pass in Game prop for GameCards
@@ -19,9 +19,9 @@ const GameCard = ({ game }: Props) => {
       />
       <div className="game-info">
         <span className="game-name">{game.name}</span>
-        <Platforms
+        <PlatformsList
           platforms={game.parent_platforms?.map((p) => p.platform)}
-        ></Platforms>
+        ></PlatformsList>
       </div>
     </div>
   );

@@ -1,16 +1,7 @@
 import { GameQuery } from "../App";
-import fetchGames from "../utility/fetchGame";
+import useGames from "../hooks/useGame";
 import GameCard from "./GameCard";
-import { Platform } from "./PlatformSelector";
 import "./css/GameGrid.css";
-
-// Interface describing game info
-export interface Game {
-  id: number;
-  name: string;
-  background_image: string;
-  parent_platforms: { platform: Platform }[];
-}
 
 interface Props {
   gameQuery: GameQuery;
@@ -19,7 +10,7 @@ interface Props {
 // GameGrid component returns a component that displays game content in a grid
 const GameGrid = ({ gameQuery }: Props) => {
   // Call fetchGame to get array of games, error string, and loading status
-  const { data, error, isLoading } = fetchGames(gameQuery);
+  const { data, error, isLoading } = useGames(gameQuery);
 
   // Return the grid of games
   return (

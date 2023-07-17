@@ -2,8 +2,8 @@ import { useState } from "react";
 import NavBar from "./components/NavBar";
 import GenresList, { Genre } from "./components/GenresList";
 import PlatformSelector, { Platform } from "./components/PlatformSelector";
-import GameGrid from "./components/GameGrid";
 import SortSelector from "./components/SortSelector";
+import GameGrid from "./components/GameGrid";
 import "./App.css";
 import "normalize.css";
 

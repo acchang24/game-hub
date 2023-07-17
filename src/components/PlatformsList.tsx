@@ -24,7 +24,7 @@ platformMap.set("ios", <MdPhoneIphone></MdPhoneIphone>);
 platformMap.set("web", <BsGlobe></BsGlobe>);
 
 // Platforms component returns a game's platform info as icons
-const Platforms = ({ platforms = [] }: Props) => {
+const PlatformsList = ({ platforms = [] }: Props) => {
   return (
     <div className="platform-list">
       {platforms.map((p) => {
@@ -38,4 +38,4 @@ const Platforms = ({ platforms = [] }: Props) => {
   );
 };
 
-export default Platforms;
+export default PlatformsList;

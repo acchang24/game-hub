@@ -1,4 +1,4 @@
-import fetchData from "../utility/fetchData";
+import useData from "../hooks/useData";
 import Selector from "./Selector";
 
 // Interface describing platform info
@@ -16,8 +16,8 @@ interface Props {
 
 // Returns a drop down selector to filter game platforms
 const PlatformSelector = ({ onSelect, selectedPlatform }: Props) => {
-  // Keep track/fetch platform data
-  const { data } = fetchData<Platform>("/platforms/lists/parents");
+  // Call use data hook to list of platforms
+  const { data } = useData<Platform>("/platforms/lists/parents");
 
   return (
     <Selector

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AxiosRequestConfig, CanceledError } from "axios";
-import apiClient from "./apiClient";
+import apiClient from "../utility/apiClient";
 
 // Interface to pass a type in
 // when calling .get with axios
@@ -10,7 +10,7 @@ interface FetchResponse<T> {
 
 // Generic function to help fetch data by passing in an endpoint.
 // Returns an array of data, error string, and loading status
-const fetchData = <T>(
+const useData = <T>(
   endPoint: string,
   requestConfigs?: AxiosRequestConfig,
   dependencies?: any[]
@@ -51,4 +51,4 @@ const fetchData = <T>(
   return { data, error, isLoading };
 };
 
-export default fetchData;
+export default useData;
