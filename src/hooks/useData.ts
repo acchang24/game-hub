@@ -8,7 +8,7 @@ interface FetchResponse<T> {
   results: T[];
 }
 
-// Generic function to help fetch data by passing in an endpoint.
+// Generic hook to help fetch data by passing in an endpoint.
 // Returns an array of data, error string, and loading status
 const useData = <T>(
   endPoint: string,

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import NavBar from "./components/NavBar";
-import GenresList, { Genre } from "./components/GenresList";
+import GenresList from "./components/GenresList";
+import { Genre } from "./hooks/useGenre";
 import GamesHeading from "./components/GamesHeading";
 import PlatformSelector, { Platform } from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";

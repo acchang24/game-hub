@@ -10,6 +10,7 @@ export interface Game {
   parent_platforms: { platform: Platform }[];
 }
 
+// Hook to fetch games based on game queries
 const useGames = (gameQuery: GameQuery) => {
   const { data, error, isLoading } = useData<Game>(
     "/games",
