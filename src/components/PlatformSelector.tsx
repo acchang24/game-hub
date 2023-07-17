@@ -1,12 +1,5 @@
-import useData from "../hooks/useData";
+import usePlatforms, { Platform } from "../hooks/usePlatforms";
 import Selector from "./Selector";
-
-// Interface describing platform info
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
 
 // onSelect prop to pass data to App component
 interface Props {
@@ -17,7 +10,7 @@ interface Props {
 // Returns a drop down selector to filter game platforms
 const PlatformSelector = ({ onSelect, selectedPlatform }: Props) => {
   // Call use data hook to list of platforms
-  const { data } = useData<Platform>("/platforms/lists/parents");
+  const { data } = usePlatforms();
 
   return (
     <Selector

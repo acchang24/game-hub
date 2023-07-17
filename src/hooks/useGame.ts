@@ -1,5 +1,5 @@
 import { GameQuery } from "../App";
-import { Platform } from "../components/PlatformSelector";
+import { Platform } from "./usePlatforms";
 import useData from "./useData";
 
 // Interface describing game info

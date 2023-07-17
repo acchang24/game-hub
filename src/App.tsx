@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { Genre } from "./hooks/useGenre";
+import { Platform } from "./hooks/usePlatforms";
 import NavBar from "./components/NavBar";
 import GenresList from "./components/GenresList";
-import { Genre } from "./hooks/useGenre";
 import GamesHeading from "./components/GamesHeading";
-import PlatformSelector, { Platform } from "./components/PlatformSelector";
+import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
 import GameGrid from "./components/GameGrid";
 import "./App.css";

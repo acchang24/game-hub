@@ -3,7 +3,7 @@ import { BsAndroid, BsPlaystation, BsXbox, BsGlobe } from "react-icons/bs";
 import { SiNintendo } from "react-icons/si";
 import { FaLinux } from "react-icons/fa";
 import { MdPhoneIphone } from "react-icons/md";
-import { Platform } from "./PlatformSelector";
+import { Platform } from "../hooks/usePlatforms";
 import "./css/Platforms.css";
 
 // Pass in game's id and platform info for platform's props
