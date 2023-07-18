@@ -15,10 +15,10 @@ const GameGrid = ({ gameQuery }: Props) => {
   // Return the grid of games
   return (
     <>
-      {error && <p>{error}</p>}
+      {error && <p>{error.message}</p>}
       {!isLoading && (
         <div className="game-grid">
-          {data.map((games) => {
+          {data?.results.map((games) => {
             return <GameCard game={games} key={games.id}></GameCard>;
           })}
         </div>

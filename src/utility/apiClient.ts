@@ -1,5 +1,11 @@
 import axios from "axios";
 
+// Interface to pass a type in
+// when calling .get with axios
+export interface FetchResponse<T> {
+  results: T[];
+}
+
 export default axios.create({
   baseURL: "https://api.rawg.io/api",
   params: {
