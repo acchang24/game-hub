@@ -4,7 +4,7 @@ import "./css/Selector.css";
 
 // Props to pass in list data as well as selected item's name
 interface Props<T> {
-  data: { id: number; name: string; }[];
+  data: { id: number; name: string; }[] | undefined;
   selectedName: string;
   onSelect: (item: T) => void;
 }
@@ -66,7 +66,7 @@ const Selector = <T,>({ data, selectedName, onSelect }: Props<T>) => {
                 <div>None</div>
               </button>
             </li>
-            {data.map((item) => {
+            {data?.map((item) => {
               return (
                 <li key={item.id}>
                   <button

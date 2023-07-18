@@ -14,7 +14,7 @@ const PlatformSelector = ({ onSelect, selectedPlatform }: Props) => {
 
   return (
     <Selector
-      data={data}
+      data={data?.results}
       selectedName={selectedPlatform?.name || "Platforms"}
       onSelect={onSelect}
     ></Selector>
