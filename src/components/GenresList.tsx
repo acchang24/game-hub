@@ -41,14 +41,14 @@ const GenresList = ({ onSelect }: Props) => {
       {(genresActive || window.innerWidth >= 768) && (
         <>
           <h2 className="genre-header">Genres</h2>
-          {error && <p>{error}</p>}
+          {error && <p>{error.message}</p>}
           {isLoading && (
             <div className="genre-loader">
               <Loader></Loader>
             </div>
           )}
           <ul className="genre-list">
-            {data.map((genre) => (
+            {data?.results.map((genre) => (
               <li className="list-item" key={genre.id}>
                 <button
                   className="genre-btn"

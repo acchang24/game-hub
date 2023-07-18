@@ -4,7 +4,7 @@ import apiClient from "../utility/apiClient";
 
 // Interface to pass a type in
 // when calling .get with axios
-interface FetchResponse<T> {
+export interface FetchResponse<T> {
   results: T[];
 }
 
