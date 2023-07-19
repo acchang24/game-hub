@@ -1,6 +1,5 @@
-import apiClient from "../utility/apiClient";
 import { useQuery } from "@tanstack/react-query";
-import { FetchResponse } from "../utility/apiClient";
+import ApiClient, { FetchResponse } from "../utility/apiClient";
 // import useData, { FetchResponse } from "./useData";
 
 // Interface describing platform info
@@ -19,14 +18,14 @@ export interface Platform {
 //   return { data, error, isLoading };
 // };
 
+// Instance of ApiClient
+const apiClient = new ApiClient<Platform>("/platforms/lists/parents");
+
 // Fetch using react query
 const usePlatforms = () =>
   useQuery<FetchResponse<Platform>, Error>({
     queryKey: ["platforms"],
-    queryFn: () =>
-      apiClient
-        .get<FetchResponse<Platform>>("/platforms/lists/parents")
-        .then((response) => response.data),
+    queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000, // 24hrs to stale data
   });
 

@@ -1,4 +1,4 @@
-import apiClient from "../utility/apiClient";
+import ApiClient from "../utility/apiClient";
 import { useQuery } from "@tanstack/react-query";
 import { FetchResponse } from "../utility/apiClient";
 // import useData, { FetchResponse } from "./useData";
@@ -17,16 +17,16 @@ export interface Genre {
 //   return { data, error, isLoading };
 // };
 
+// Instance of ApiClient
+const apiClient = new ApiClient<Genre>("/genres");
+
 // Fetching data with ReactQuery
 const useGenre = () =>
   // calls useQuery hook, passing in a config object
   useQuery<FetchResponse<Genre>, Error>({
     queryKey: ["genres"],
     // Query function calls apiClient to fetch data
-    queryFn: () =>
-      apiClient
-        .get<FetchResponse<Genre>>("/genres")
-        .then((response) => response.data),
+    queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000, // 24hr to consider stale
   });
 
