@@ -1,9 +1,9 @@
 import React from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import useGames from "../hooks/useGames";
 import { GameQuery } from "../App";
-import useGames from "../hooks/useGame";
 import GameCard from "./GameCard";
 import "./css/GameGrid.css";
-import InfiniteScroll from "react-infinite-scroll-component";
 
 interface Props {
   gameQuery: GameQuery;

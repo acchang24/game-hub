@@ -1,4 +1,4 @@
-import { Game } from "../hooks/useGame";
+import { Game } from "../hooks/useGames";
 import getCroppedImage from "../utility/getCroppedImage";
 import PlatformsList from "./PlatformsList";
 import "./css/GameCard.css";
