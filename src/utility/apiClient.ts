@@ -3,6 +3,8 @@ import axios, { AxiosRequestConfig } from "axios";
 // Interface to pass a type in
 // when calling .get with axios
 export interface FetchResponse<T> {
+  count: number;
+  next: string | null;
   results: T[];
 }
 
