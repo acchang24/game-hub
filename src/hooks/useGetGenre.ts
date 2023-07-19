@@ -1,4 +1,4 @@
-import useGenre from "./useGenre";
+import useGenre from "./useGenres";
 
 const useGetGenre = (id?: number) => {
   const { data: genres } = useGenre();

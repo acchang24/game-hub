@@ -13,7 +13,7 @@ export interface Genre {
 const apiClient = new ApiClient<Genre>("/genres");
 
 // Fetching data with ReactQuery
-const useGenre = () =>
+const useGenres = () =>
   // calls useQuery hook, passing in a config object
   useQuery<FetchResponse<Genre>, Error>({
     queryKey: ["genres"],
@@ -23,4 +23,4 @@ const useGenre = () =>
     initialData: genres,
   });
 
-export default useGenre;
+export default useGenres;
