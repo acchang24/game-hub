@@ -4,13 +4,17 @@ import Selector from "./Selector";
 // onSelect prop to pass data to App component
 interface Props {
   onSelect: (platform: Platform) => void;
-  selectedPlatform: Platform | null;
+  selectedPlatformId?: number;
 }
 
 // Returns a drop down selector to filter game platforms
-const PlatformSelector = ({ onSelect, selectedPlatform }: Props) => {
+const PlatformSelector = ({ onSelect, selectedPlatformId }: Props) => {
   // Call use data hook to list of platforms
   const { data } = usePlatforms();
+
+  const selectedPlatform = data?.results.find(
+    (p) => p.id === selectedPlatformId
+  );
 
   return (
     <Selector

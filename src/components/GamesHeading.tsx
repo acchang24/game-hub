@@ -1,4 +1,6 @@
 import { GameQuery } from "../App";
+import useGenre from "../hooks/useGenre";
+import usePlatforms from "../hooks/usePlatforms";
 import "./css/GamesHeading.css";
 
 interface Props {
@@ -6,10 +8,14 @@ interface Props {
 }
 
 const GamesHeading = ({ gameQuery }: Props) => {
+  const { data: genres } = useGenre();
+  const genre = genres?.results.find((g) => g.id === gameQuery.genreId);
+
+  const { data: platforms } = usePlatforms();
+  const platform = platforms?.results.find((p) => p.id === gameQuery.platformId);
+
   // Get the heading based on selected parameters
-  const heading = `${gameQuery.platform?.name || ""} ${
-    gameQuery.genre?.name || ""
-  } Games`;
+  const heading = `${platform?.name || ""} ${genre?.name || ""} Games`;
 
   return <h1 className="games-header">{heading}</h1>;
 };

@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { Genre } from "./hooks/useGenre";
-import { Platform } from "./hooks/usePlatforms";
 import NavBar from "./components/NavBar";
 import GenresList from "./components/GenresList";
 import GamesHeading from "./components/GamesHeading";
@@ -12,8 +10,8 @@ import "normalize.css";
 
 // Interface describing queries for searching/filtering through games
 export interface GameQuery {
-  genre: Genre;
-  platform: Platform | null;
+  genreId?: number;
+  platformId?: number;
   searchText: string;
   sortOrder: string;
 }
@@ -32,7 +30,7 @@ function App() {
       <div className="grid-container">
         <GenresList
           onSelect={(genre) => {
-            setGameQuery({ ...gameQuery, genre: genre });
+            setGameQuery({ ...gameQuery, genreId: genre.id });
           }}
         ></GenresList>
         <div>
@@ -41,9 +39,9 @@ function App() {
             <div className="selectors">
               <PlatformSelector
                 onSelect={(platform) => {
-                  setGameQuery({ ...gameQuery, platform: platform });
+                  setGameQuery({ ...gameQuery, platformId: platform.id });
                 }}
-                selectedPlatform={gameQuery.platform}
+                selectedPlatformId={gameQuery.platformId}
               ></PlatformSelector>
               <SortSelector
                 onSelect={(order) => {
