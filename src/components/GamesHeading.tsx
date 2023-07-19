@@ -1,6 +1,6 @@
 import { GameQuery } from "../App";
-import useGenre from "../hooks/useGenre";
-import usePlatforms from "../hooks/usePlatforms";
+import useGetGenre from "../hooks/useGetGenre";
+import useGetPlatform from "../hooks/useGetPlatform";
 import "./css/GamesHeading.css";
 
 interface Props {
@@ -8,11 +8,10 @@ interface Props {
 }
 
 const GamesHeading = ({ gameQuery }: Props) => {
-  const { data: genres } = useGenre();
-  const genre = genres?.results.find((g) => g.id === gameQuery.genreId);
-
-  const { data: platforms } = usePlatforms();
-  const platform = platforms?.results.find((p) => p.id === gameQuery.platformId);
+  // Get the selected genre
+  const genre = useGetGenre(gameQuery.genreId);
+  // Get the selected platform
+  const platform = useGetPlatform(gameQuery.platformId);
 
   // Get the heading based on selected parameters
   const heading = `${platform?.name || ""} ${genre?.name || ""} Games`;

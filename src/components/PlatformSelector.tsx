@@ -1,3 +1,4 @@
+import useGetPlatform from "../hooks/useGetPlatform";
 import usePlatforms, { Platform } from "../hooks/usePlatforms";
 import Selector from "./Selector";
 
@@ -12,9 +13,7 @@ const PlatformSelector = ({ onSelect, selectedPlatformId }: Props) => {
   // Call use data hook to list of platforms
   const { data } = usePlatforms();
 
-  const selectedPlatform = data?.results.find(
-    (p) => p.id === selectedPlatformId
-  );
+  const selectedPlatform = useGetPlatform(selectedPlatformId);
 
   return (
     <Selector
