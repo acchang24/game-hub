@@ -3,6 +3,7 @@ import { GameQuery } from "../App";
 import useGames from "../hooks/useGame";
 import GameCard from "./GameCard";
 import "./css/GameGrid.css";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 interface Props {
   gameQuery: GameQuery;
@@ -11,40 +12,32 @@ interface Props {
 // GameGrid component returns a component that displays game content in a grid
 const GameGrid = ({ gameQuery }: Props) => {
   // Call fetchGame to get array of games, error string, and loading status
-  const {
-    data,
-    error,
-    isLoading,
-    isFetchingNextPage,
-    fetchNextPage,
-    hasNextPage,
-  } = useGames(gameQuery);
+  const { data, error, fetchNextPage, hasNextPage } = useGames(gameQuery);
+
+  // Get the number of games that were fetched
+  const fetchedGamesCount =
+    data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
 
   // Return the grid of games
   return (
     <>
       {error && <p>{error.message}</p>}
-      {!isLoading && (
-        <>
-          <div className="game-grid">
-            {data?.pages.map((page, index) => (
-              <React.Fragment key={index}>
-                {page.results.map((game) => (
-                  <GameCard game={game} key={game.id}></GameCard>
-                ))}
-              </React.Fragment>
-            ))}
-            {/* {data?.results.map((games) => {
-            return <GameCard game={games} key={games.id}></GameCard>;
-          })} */}
-          </div>
-          {hasNextPage && (
-            <button onClick={() => fetchNextPage()}>
-              {isFetchingNextPage ? "Loading..." : "Load More"}
-            </button>
-          )}
-        </>
-      )}
+      <InfiniteScroll
+        dataLength={fetchedGamesCount}
+        hasMore={!!hasNextPage}
+        next={() => fetchNextPage()}
+        loader={null}
+      >
+        <div className="game-grid">
+          {data?.pages.map((page, index) => (
+            <React.Fragment key={index}>
+              {page.results.map((game) => (
+                <GameCard game={game} key={game.id}></GameCard>
+              ))}
+            </React.Fragment>
+          ))}
+        </div>
+      </InfiniteScroll>
     </>
   );
 };
