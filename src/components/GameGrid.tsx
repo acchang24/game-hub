@@ -1,18 +1,12 @@
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import useGames from "../hooks/useGames";
-import { GameQuery } from "../App";
 import GameCard from "./GameCard";
 import "./css/GameGrid.css";
 
-interface Props {
-  gameQuery: GameQuery;
-}
-
 // GameGrid component returns a component that displays game content in a grid
-const GameGrid = ({ gameQuery }: Props) => {
-  // Call fetchGame to get array of games, error string, and loading status
-  const { data, error, fetchNextPage, hasNextPage } = useGames(gameQuery);
+const GameGrid = () => {
+  const { data, error, fetchNextPage, hasNextPage } = useGames();
 
   // Get the number of games that were fetched
   const fetchedGamesCount =

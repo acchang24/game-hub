@@ -1,4 +1,3 @@
-import { useState } from "react";
 import NavBar from "./components/NavBar";
 import GenresList from "./components/GenresList";
 import GamesHeading from "./components/GamesHeading";
@@ -8,53 +7,21 @@ import GameGrid from "./components/GameGrid";
 import "./App.css";
 import "normalize.css";
 
-// Interface describing queries for searching/filtering through games
-export interface GameQuery {
-  genreId?: number;
-  platformId?: number;
-  searchText: string;
-  sortOrder: string;
-}
-
 function App() {
-  // Keep track of the game query's state
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-
   return (
     <>
-      <NavBar
-        onSubmit={(searchText) => {
-          setGameQuery({ ...gameQuery, searchText: searchText });
-        }}
-      ></NavBar>
+      <NavBar></NavBar>
       <div className="grid-container">
-        <GenresList
-          onSelect={(genre) => {
-            setGameQuery({ ...gameQuery, genreId: genre.id });
-          }}
-        ></GenresList>
+        <GenresList></GenresList>
         <div>
           <div className="main-header">
-            <GamesHeading gameQuery={gameQuery}></GamesHeading>
+            <GamesHeading></GamesHeading>
             <div className="selectors">
-              <PlatformSelector
-                onSelect={(platform) => {
-                  setGameQuery({ ...gameQuery, platformId: platform.id });
-                }}
-                selectedPlatformId={gameQuery.platformId}
-              ></PlatformSelector>
-              <SortSelector
-                onSelect={(order) => {
-                  setGameQuery({
-                    ...gameQuery,
-                    sortOrder: order.value,
-                  });
-                }}
-                sortOrder={gameQuery.sortOrder}
-              ></SortSelector>
+              <PlatformSelector></PlatformSelector>
+              <SortSelector></SortSelector>
             </div>
           </div>
-          <GameGrid gameQuery={gameQuery}></GameGrid>
+          <GameGrid></GameGrid>
         </div>
       </div>
     </>

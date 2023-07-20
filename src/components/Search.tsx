@@ -1,19 +1,19 @@
 import { useRef, useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
+import useGameQueryStore from "../store";
 import "./css/Search.css";
 
-// onSubmit prop to send search queries to App component
-interface Props {
-  onSubmit: (searchQuery: string) => void;
-}
-
 // Returns a search bar for searching games by name
-const Search = ({ onSubmit }: Props) => {
+const Search = () => {
   // useRef to keep track of search inputs
   const searchRef = useRef<HTMLInputElement>(null);
+
   // useState to keep track whether or not the search field is filled out
   const [searchFilled, setSearchFilled] = useState<boolean>(false);
+
+  // Select the state and store setSearchText as a function
+  const setSearchText = useGameQueryStore((state) => state.setSearchText);
 
   return (
     <form
@@ -21,16 +21,17 @@ const Search = ({ onSubmit }: Props) => {
         // Prevent reloads
         event.preventDefault();
         if (searchRef.current) {
-          onSubmit(searchRef.current.value);
+          // If ref is not null, set the state's search text to the input
+          setSearchText(searchRef.current.value);
         }
       }}
     >
       <div className="input-group">
         <BsSearch className="icon icon-search"></BsSearch>
         <input
+          ref={searchRef}
           className="input"
           placeholder="Search Games..."
-          ref={searchRef}
           type="text"
           onChange={() => {
             // Keep track of if the input field is empty or not
@@ -43,6 +44,7 @@ const Search = ({ onSubmit }: Props) => {
             }
           }}
         />
+        {/* Show an x icon when input is filled */}
         {searchFilled && (
           <IoMdClose
             className="icon icon-close"

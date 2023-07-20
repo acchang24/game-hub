@@ -1,3 +1,4 @@
+import useGameQueryStore from "../store";
 import Selector from "./Selector";
 
 // Interface to describe sort order
@@ -7,14 +8,8 @@ export interface SortOrder {
   value: string;
 }
 
-// Pass in function to pass sort order to App component
-interface Props {
-  onSelect: (sortOrder: SortOrder) => void;
-  sortOrder: string;
-}
-
 // Returns a selector for sort orders
-const SortSelector = ({ onSelect, sortOrder }: Props) => {
+const SortSelector = () => {
   // Array of sort orders
   const sortOrders: SortOrder[] = [
     { id: 0, name: "Relevance", value: "" },
@@ -24,6 +19,11 @@ const SortSelector = ({ onSelect, sortOrder }: Props) => {
     { id: 4, name: "Popularity", value: "-metacritic" },
     { id: 5, name: "Average rating", value: "-rating" },
   ];
+
+  // Get the state's sort order
+  const sortOrder = useGameQueryStore((state) => state.gameQuery.sortOrder);
+  // Get the state's setSortOrder function
+  const setSortOrder = useGameQueryStore((state) => state.setSortOrder);
 
   // Find the current sort order
   const currentSortOrder = sortOrders.find(
@@ -36,7 +36,10 @@ const SortSelector = ({ onSelect, sortOrder }: Props) => {
     <Selector
       data={sortOrders}
       selectedName={"Sort by: " + selectName}
-      onSelect={onSelect}
+      onSelect={(order: SortOrder) => {
+        // Set the state's sortOrder to the selected one
+        setSortOrder(order.value);
+      }}
     ></Selector>
   );
 };

@@ -1,25 +1,30 @@
 import useGetPlatform from "../hooks/useGetPlatform";
 import usePlatforms, { Platform } from "../hooks/usePlatforms";
+import useGameQueryStore from "../store";
 import Selector from "./Selector";
 
-// onSelect prop to pass data to App component
-interface Props {
-  onSelect: (platform: Platform) => void;
-  selectedPlatformId?: number;
-}
-
 // Returns a drop down selector to filter game platforms
-const PlatformSelector = ({ onSelect, selectedPlatformId }: Props) => {
-  // Call use data hook to list of platforms
+const PlatformSelector = () => {
+  // Call use data hook to get list of platforms
   const { data } = usePlatforms();
 
-  const selectedPlatform = useGetPlatform(selectedPlatformId);
+  // Get the state's setPlatformId function
+  const setPlatformId = useGameQueryStore((state) => state.setPlatformId);
+
+  // Get the state's platform id
+  const platformId = useGameQueryStore((state) => state.gameQuery.platformId);
+
+  // Get the selected platform based on the state's platform id
+  const selectedPlatform = useGetPlatform(platformId);
 
   return (
     <Selector
       data={data?.results}
       selectedName={selectedPlatform?.name || "Platforms"}
-      onSelect={onSelect}
+      onSelect={(platform: Platform) => {
+        // set the state's selected platform to the selected one
+        setPlatformId(platform.id);
+      }}
     ></Selector>
   );
 };
