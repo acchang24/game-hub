@@ -1,8 +1,11 @@
 .game-card {
   border-radius: 10px;
-  cursor: pointer;
   overflow: hidden;
   width: 100%;
+  transition: transform 0.2s;
+}
+.game-card:hover {
+  transform: scale(1.02);
 }
 .game-img {
   display: block;
@@ -15,4 +18,8 @@
 .game-name {
   font-size: 1.25rem;
   font-weight: 800;
+}
+.game-link {
+  text-decoration: none;
+  color: #fff;
 }

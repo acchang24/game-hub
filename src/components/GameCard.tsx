@@ -1,4 +1,5 @@
-import { Game } from "../hooks/useGames";
+import { Link } from "react-router-dom";
+import { Game } from "../interfaces/Game";
 import getCroppedImage from "../utility/getCroppedImage";
 import PlatformsList from "./PlatformsList";
 import "./css/GameCard.css";
@@ -18,7 +19,11 @@ const GameCard = ({ game }: Props) => {
         alt={game.name + " image"}
       />
       <div className="game-info">
-        <span className="game-name">{game.name}</span>
+        <span className="game-name">
+          <Link className="game-link" to={`/games/` + game.slug}>
+            {game.name}
+          </Link>
+        </span>
         <PlatformsList
           platforms={game.parent_platforms?.map((p) => p.platform)}
         ></PlatformsList>

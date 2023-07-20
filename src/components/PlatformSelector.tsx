@@ -1,5 +1,6 @@
 import useGetPlatform from "../hooks/useGetPlatform";
-import usePlatforms, { Platform } from "../hooks/usePlatforms";
+import usePlatforms from "../hooks/usePlatforms";
+import { Platform } from "../interfaces/Platform";
 import useGameQueryStore from "../store";
 import Selector from "./Selector";
 

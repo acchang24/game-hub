@@ -1,13 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import ApiClient, { FetchResponse } from "../utility/apiClient";
 import genres from "../static-data/genres";
-
-// Interface describing game genre info
-export interface Genre {
-  id: number;
-  image_background: string;
-  name: string;
-}
+import { Genre } from "../interfaces/Genre";
 
 // Instance of ApiClient
 const apiClient = new ApiClient<Genre>("/genres");
