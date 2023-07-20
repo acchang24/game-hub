@@ -1,0 +1,11 @@
+.definition-item {
+  margin-top: 10px;
+}
+.description-item {
+  margin-left: 0;
+  opacity: 50%;
+  margin: 16px 0;
+}
+.description-item p {
+  margin: 10px 0;
+}
