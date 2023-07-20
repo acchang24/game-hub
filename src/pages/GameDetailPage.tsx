@@ -1,18 +1,26 @@
 import { useParams } from "react-router-dom";
 import useGetGame from "../hooks/useGetGame";
-import "./css/GameDetailsPage.css"
+import ExpandableText from "../components/ExpandableText";
+import "./css/GameDetailsPage.css";
 
 const GameDetailPage = () => {
   const { id } = useParams();
 
-  const { data: game, error} = useGetGame(id!);
+  // Get the game based on id/slug name
+  const { data: game, error } = useGetGame(id!);
 
-  if (error) throw error;
-
-  return <div className="game-detail">
-    <h1>{game?.name}</h1>
-    <p>{game?.description_raw}</p>
-  </div>;
+  return (
+    <>
+      {error ? (
+        <p>{error.message}</p>
+      ) : (
+        <div className="game-detail">
+          <h1>{game?.name}</h1>
+          <ExpandableText>{game?.description_raw}</ExpandableText>
+        </div>
+      )}
+    </>
+  );
 };
 
 export default GameDetailPage;

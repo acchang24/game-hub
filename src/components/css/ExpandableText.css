@@ -1,0 +1,11 @@
+.summary {
+  margin: 10px 0;
+}
+.expand-btn {
+  cursor: pointer;
+  background-color: #313131;
+  color: #ccc;
+  border: 0;
+  padding: 5px;
+  border-radius: 5px;
+}
