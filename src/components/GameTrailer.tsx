@@ -1,9 +1,12 @@
 import useTrailers from "../hooks/useTrailers";
+import "./css/GameTrailer.css";
 
+// Pass in gameId as prop
 interface Props {
   gameId: number;
 }
 
+// Returns trailer of game as a video
 const GameTrailer = ({ gameId }: Props) => {
   const { data, isLoading, error } = useTrailers(gameId);
 
@@ -12,7 +15,12 @@ const GameTrailer = ({ gameId }: Props) => {
 
   const first = data?.results[0];
   return first ? (
-    <video src={first.data[480]} height={480} poster={first.preview} controls />
+    <video
+      className="game-trailer"
+      src={first.data[480]}
+      poster={first.preview}
+      controls
+    />
   ) : null;
 };
 

@@ -1,7 +1,18 @@
 .game-detail {
-  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 30px;
+  gap: 20px;
+}
+.game-attributes {
+  width: 100%;
 }
 .info-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+}
+@media screen and (min-width: 1024px) {
+  .game-detail {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

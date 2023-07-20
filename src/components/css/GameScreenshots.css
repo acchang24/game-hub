@@ -1,0 +1,13 @@
+.screenshots-grid {
+  display: grid;
+  gap: 25px;
+  grid-template-columns: 1fr;
+}
+.screenshot {
+    width: 100%;
+}
+@media screen and (min-width: 768px) {
+  .screenshots-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
