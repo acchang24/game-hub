@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
 import useGameQueryStore from "../store";
@@ -15,6 +16,8 @@ const Search = () => {
   // Select the state and store setSearchText as a function
   const setSearchText = useGameQueryStore((state) => state.setSearchText);
 
+  const navigate = useNavigate();
+
   return (
     <form
       onSubmit={(event) => {
@@ -23,6 +26,7 @@ const Search = () => {
         if (searchRef.current) {
           // If ref is not null, set the state's search text to the input
           setSearchText(searchRef.current.value);
+          navigate("/");
         }
       }}
     >
