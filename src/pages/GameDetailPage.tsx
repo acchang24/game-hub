@@ -12,9 +12,10 @@ const GameDetailPage = () => {
   const { id } = useParams();
 
   // Get the game based on id/slug name
-  const { data: game, error } = useGetGame(id!);
+  const { data: game, isLoading, error } = useGetGame(id!);
 
-  if (error || !game) return null;
+  if (isLoading) return null;
+  if (error || !game) throw error;
 
   return (
     <>
