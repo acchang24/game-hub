@@ -36,7 +36,7 @@
 }
 .genre-collapsible {
   display: flex;
-  justify-content: end;
+  justify-content: start;
   margin-bottom: 15px;
 }
 .menu-icon {
@@ -44,7 +44,7 @@
   color: #a9a9a9;
   cursor: pointer;
   height: 35px;
-  margin-right: 30px;
+  margin-left: 20px;
   transition: box-shadow 0.15s;
   transition: color 0.15s;
   width: 35px;
@@ -59,9 +59,18 @@
   margin: 10px 0;
   transform: scale(0.8);
 }
+.side-menu {
+  display: none;
+}
+.expanded {
+  display: block;
+}
 @media screen and (min-width: 768px) {
   .genre-collapsible,
   .menu-icon {
     display: none;
+  }
+  .side-menu {
+    display: block;
   }
 }
