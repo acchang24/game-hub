@@ -3,7 +3,7 @@ import Layout from "./pages/Layout";
 import HomePage from "./pages/HomePage";
 import GameDetailPage from "./pages/GameDetailPage";
 import ErrorPage from "./pages/ErrorPage";
-import LoginPage from "./pages/LoginPage";
+// import LoginPage from "./pages/LoginPage";
 
 // Create a Router
 const router = createBrowserRouter([
@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage></HomePage> },
       { path: "games/:id", element: <GameDetailPage></GameDetailPage> },
-      { path: "login", element: <LoginPage></LoginPage> },
+      // { path: "login", element: <LoginPage></LoginPage> },
     ],
   },
 ]);
